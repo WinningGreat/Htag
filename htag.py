@@ -202,30 +202,6 @@ def main(username, password, hashtags, max_hashtags=None, min_posts=None, max_po
         err.insert(0,'DONE, the csv will be in the same folder/directory as the application')
 
 
-'''if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('username', help='Your IG username')
-    parser.add_argument('password', help='Your IG password')
-    parser.add_argument('hashtags', help='The hashtags you want to analyze. Seperate by comma. Example: car,boat,plane')
-    parser.add_argument('--max_tags', help='The maximum of suggested tags to fetch per hashtag', type=int)
-    parser.add_argument('--min_posts', help='Check only tags with minimum posts', type=int)
-    parser.add_argument('--max_posts', help='Check only tags with maximum posts', type=int)
-    parser.add_argument('--nosuggestions', help='Don\'t get suggestions for the inputted hashtags', dest='suggestions',
-                        action='store_false')
-    parser.add_argument('--file', help='You need this flag if you are using a .txt file to import hashtags.',
-                        dest='file', action='store_true')
-    parser.set_defaults(suggestions=True, file=False)
-    args = parser.parse_args()
-    if not args.file:
-        hashtags = list(filter(None, args.hashtags.split(',')))  # Create list and remove empty elements
-    else:
-        hashtags = []
-    if args.file:
-        file = args.hashtags
-    else:
-        file = False '''
-'''main(args.username, args.password, hashtags, args.max_tags, args.min_posts, args.max_posts, args.suggestions, file)'''
-
 
 def exploreTag():
 
@@ -258,24 +234,25 @@ def exploreTag():
             print(str(ex))
             err.delete(first=0)
             err.insert(0, str(ex))
-master = Tk()
-Label(master,text="UserName").grid(row=0)
-Label(master,text="Password").grid(row=1)
-Label(master,text="Hashtag").grid(row=2)
-Label(master,text="Max Tags").grid(row=3)
-Label(master,text="Info").grid(row=5)
-e0 = Entry(master)
-e1 = Entry(master)
-e2 = Entry(master)
-maxT = Entry(master)
-err = Entry(master)
-e0.grid(row=0,column=1)
-e1.grid(row=1,column=1)
-e2.grid(row=2,column=1)
-maxT.grid(row=3,column=1)
-err.config(width=50)
+if __name__ == '__main__':
+    master = Tk()
+    Label(master,text="UserName").grid(row=0)
+    Label(master,text="Password").grid(row=1)
+    Label(master,text="Hashtag").grid(row=2)
+    Label(master,text="Max Tags").grid(row=3)
+    Label(master,text="Info").grid(row=5)
+    e0 = Entry(master)
+    e1 = Entry(master)
+    e2 = Entry(master)
+    maxT = Entry(master)
+    err = Entry(master)
+    e0.grid(row=0,column=1)
+    e1.grid(row=1,column=1)
+    e2.grid(row=2,column=1)
+    maxT.grid(row=3,column=1)
+    err.config(width=50)
 
-err.grid(row=5,column=1)
-Button(master, text='Quit', command=master.quit).grid(row=6, column=0, sticky=W, pady=4)
-Button(master, text='Explore Tag', command=exploreTag).grid(row=6, column=1, sticky=W, pady=4)
-master.mainloop()
+    err.grid(row=5,column=1)
+    Button(master, text='Quit', command=master.quit).grid(row=6, column=0, sticky=W, pady=4)
+    Button(master, text='Explore Tag', command=exploreTag).grid(row=6, column=1, sticky=W, pady=4)
+    master.mainloop()
